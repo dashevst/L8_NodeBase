@@ -1,0 +1,23 @@
+{
+  "name": "l8_nodebase",
+  "version": "1.0.0",
+  "main": "use.js",
+  "scripts": {
+    "start": "node -r dotenv/config use.js dotenv_config_path=.env.development",
+    "build": "node -r dotenv/config use.js dotenv_config_path=.env.production",
+    "deploy": "node -r dotenv/config use.js dotenv_config_path=.env.domain",
+    "dev": "nodemon src/basic.js",
+    "task:bcrypt": "node bcrypt_task.js",
+    "task:os": "node -r dotenv/config src/os/index.js",
+    "task:clean": "node -e \"require('./src/modules/fsModule').clearProject('.')\"",
+    "task:backup": "node -e \"require('./src/modules/fsModule').backupFile('use.js')\"",
+    "task:stats": "node -e \"console.log(require('./src/modules/fsModule').listAll('.').length + ' файлов найдено')\""
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
